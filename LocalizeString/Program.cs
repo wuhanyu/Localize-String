@@ -170,7 +170,7 @@ LocalizeString.exe -respath:resPath -localizefile:localizeFile
 
 Comment:
 The resPath stands for the directory where the localize string is store.
-The localizeFile needs to be saved as .csv format with '\t' seperation.
+The localizeFile needs to be saved as .txt(Unicode Text option in Excel) format with '\t' seperation.
 The column name of localizeFile should be locale like zh-cn, ja-jp.
             ");
         }
