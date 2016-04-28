@@ -60,7 +60,17 @@ namespace LocalizeString
                         XmlNode node = templates[key].Clone();
                         node.SelectNodes("//value")[0].InnerText = localizations[locale][key];
                         XmlNode importNode = xml.ImportNode(node, true);
-                        xml.DocumentElement.AppendChild(importNode);
+                        var xpath = string.Format("{0}[@name='{1}']", node.Name, node.Attributes["name"].Value);
+                        var oldNode = xml.DocumentElement.SelectSingleNode(xpath);
+                        if (oldNode == null)
+                        {
+                            xml.DocumentElement.AppendChild(importNode);
+                        }
+                        else
+                        {
+                            xml.DocumentElement.ReplaceChild(importNode, oldNode);
+                        }
+                        
                     }
                     xml.Save(filepath);
                 }
